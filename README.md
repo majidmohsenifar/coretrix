@@ -23,7 +23,7 @@ for testing API use postman collection provided in project.
 - When the project is run it tries to index some products using a indexProducts command
 - Cart is stored in redis for better performance.
 
-#Extra libraries used
+# Extra libraries used
 - gin for routing
 - viper for configs
 - zap for logging
