@@ -64,13 +64,13 @@ func (s *service) Search(params SearchParams) (apiResponse response.ApiResponse,
 	products := make([]SearchResponseProduct, 0)
 	domain := s.configs.GetDomain()
 	for _, r := range result {
-		imageUrl := domain + r.Image
+		imageURL := domain + r.Image
 		p := SearchResponseProduct{
 			ID:          r.ID,
 			Title:       r.Title,
 			Price:       r.Price,
 			Description: r.Description,
-			Image:       imageUrl,
+			Image:       imageURL,
 		}
 		products = append(products, p)
 

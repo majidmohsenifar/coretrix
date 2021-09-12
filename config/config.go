@@ -6,15 +6,12 @@ import (
 	"github.com/spf13/viper"
 )
 
-const FileName = "config"
-const TestConfigFileName = "config_test"
-
-//const FilePath = "/app/config/"
-const FilePath = "./config/"
-
-//since viper does not accept absolute path  we have this relative path for our functional test
-//const TestConfigFilePath = "/app/config/"
-const TestConfigFilePath = "./../../config/"
+const (
+	FileName           = "config"
+	TestConfigFileName = "config_test"
+	FilePath           = "/app/config/"
+	TestConfigFilePath = "/app/config/"
+)
 
 func SetConfigs() *viper.Viper {
 	v := viper.New()

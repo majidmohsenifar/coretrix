@@ -3,10 +3,8 @@ package platform
 import "go.uber.org/zap"
 
 const (
-	//LogFilePath = "/app/var/logs/coretrix.log"
-	LogFilePath = "./var/logs/coretrix.log"
-	//TestLogFilePath = "/app/var/logs/coretrix.log"
-	TestLogFilePath = "./../../var/logs/coretrix.log"
+	LogFilePath     = "/app/var/logs/coretrix.log"
+	TestLogFilePath = "/app/var/logs/coretrix.log"
 )
 
 type Logger interface {
