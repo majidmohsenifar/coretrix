@@ -1,0 +1,4 @@
+FROM golang:1.16
+RUN GO111MODULE=on
+WORKDIR /app
+

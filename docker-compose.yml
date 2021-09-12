@@ -1,0 +1,19 @@
+version: '3'
+services:
+  coretrix-httpd:
+    container_name: coretrix-httpd-go
+    command: bash -c "go build -o httpd cmd/httpd/main.go && ./httpd"
+    build:
+      context: ./.docker/
+    restart: always
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+
+  redis:
+    image: "redislabs/redisearch:latest"
+    ports:
+      - "6379:6379"
+

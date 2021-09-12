@@ -1,0 +1,12 @@
+coretrix:
+  environment: "test"
+  domain : "http://localhost:8000"
+
+redis:
+  dsn: "redis:6379"
+  password: ""
+  db: 0
+
+redissearch:
+  dsn: "redis:6379"
+  index: "products"

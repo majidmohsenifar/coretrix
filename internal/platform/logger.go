@@ -1,0 +1,51 @@
+package platform
+
+import "go.uber.org/zap"
+
+const (
+	//LogFilePath = "/app/var/logs/coretrix.log"
+	LogFilePath = "./var/logs/coretrix.log"
+	//TestLogFilePath = "/app/var/logs/coretrix.log"
+	TestLogFilePath = "./../../var/logs/coretrix.log"
+)
+
+type Logger interface {
+	Error(msg string, err error, fields ...zap.Field)
+	Fatal(msg string, fields ...zap.Field)
+}
+type logger struct {
+	logger *zap.Logger
+}
+
+func (l *logger) Error(msg string, err error, fields ...zap.Field) {
+	allFields := append([]zap.Field{zap.Error(err)}, fields...)
+	l.logger.Error(msg, allFields...)
+}
+
+func (l *logger) Fatal(msg string, fields ...zap.Field) {
+	l.logger.Fatal(msg, fields...)
+}
+
+func NewLogger(configs Configs) Logger {
+	cfg := zap.NewProductionConfig()
+	env := configs.GetEnv()
+	logPath := LogFilePath
+
+	if env == EnvTest {
+		logPath = TestLogFilePath
+	}
+
+	cfg.OutputPaths = []string{
+		logPath,
+	}
+
+	zapLogger, err := cfg.Build()
+
+	if err != nil {
+		panic("can not set logger")
+	}
+
+	return &logger{
+		logger: zapLogger,
+	}
+}
