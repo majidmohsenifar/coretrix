@@ -38,7 +38,7 @@ func TestSearchService_SearchProductByTitle(t *testing.T) {
 			},
 		},
 	}
-	redisSearchClient.On("Search", "title", 0, 2).Once().Return(docs, 2, nil)
+	redisSearchClient.On("Search", "title*", 0, 2).Once().Return(docs, 2, nil)
 	searchService := product.NewSearchService(redisSearchClient)
 	result, total, err := searchService.SearchProductByTitle("title", 0, 2)
 	assert.Nil(t, err)
